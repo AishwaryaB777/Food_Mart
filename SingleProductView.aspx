@@ -4,970 +4,774 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+
+    <title>FoodMart - Product Details</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+        crossorigin="anonymous" />
+
+    <link rel="stylesheet" type="text/css" href="css/vendor.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap"
+        rel="stylesheet" />
+
     <style type="text/css">
-        .auto-style1 {
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #fffdf3;
+            font-family: 'Nunito', sans-serif;
+            color: #333333;
+        }
+
+        /* ================= HEADER ================= */
+
+        .foodmart-header {
+            background: #ffffff;
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        .header-container {
+            padding: 18px 5%;
+        }
+
+        .main-logo img {
+            max-height: 55px;
+            width: auto;
+        }
+
+        .search-bar {
+            background: #f8f8f8;
+            border-radius: 18px;
+            padding: 8px;
+        }
+
+        .search-bar input,
+        .search-bar select {
+            border: none;
+            background: transparent;
+            box-shadow: none !important;
+            outline: none;
+        }
+
+        .support-box span {
+            font-size: 13px;
+            color: #777777;
+        }
+
+        .support-box h5 {
+            font-weight: 800;
+            margin-top: 3px;
+        }
+
+        .header-icon {
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #fff8d6;
+            color: #333333;
+            transition: 0.2s;
+        }
+
+        .header-icon:hover {
+            background: #FFD21F;
+        }
+
+        .cart-link {
+            text-decoration: none;
+            color: #333333;
+            font-weight: 700;
+        }
+
+        /* ================= PRODUCT SECTION ================= */
+
+        .product-page {
+            min-height: calc(100vh - 100px);
+            padding: 55px 20px 70px;
+        }
+
+        .product-card {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 45px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.07);
+        }
+
+        .product-image-section {
+            background: #fff8d6;
+            border-radius: 24px;
+            min-height: 440px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 35px;
+        }
+
+        .product-image {
             width: 100%;
-            height: 698px;
+            max-width: 380px;
+            height: 380px;
+            object-fit: contain;
+            border-radius: 18px;
         }
 
-        .auto-style3 {
-            width: 398px;
-            ;
+        .product-details {
+            padding: 15px 10px 15px 35px;
         }
 
-        .auto-style4 {
-            width: 394px;
+        .product-category {
+            display: inline-block;
+            background: #fff1a8;
+            color: #856a00;
+            padding: 7px 15px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 18px;
         }
 
-        .auto-style5 {
-            height: 24px;
+        .product-name {
+            font-size: 34px;
+            font-weight: 800;
+            line-height: 1.2;
+            color: #222222;
+            margin-bottom: 18px;
         }
 
-        .auto-style6 {
-            width: 394px;
-            height: 24px;
+        .product-price {
+            font-size: 30px;
+            font-weight: 800;
+            color: #e5a900;
+            margin-bottom: 22px;
         }
 
-        .auto-style7 {
-            height: 26px;
+        .product-description {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #777777;
+            margin-bottom: 28px;
         }
 
-        .auto-style8 {
-            width: 394px;
-            height: 26px;
+        .quantity-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 28px;
         }
 
-        .auto-style9 {
-            height: 76px;
+        .quantity-label {
+            font-size: 16px;
+            font-weight: 800;
+            color: #333333;
         }
 
-        .auto-style10 {
-            width: 394px;
-            height: 76px;
+        .quantity-number {
+            font-weight: 700;
+            font-size: 16px;
         }
 
-        .auto-style11 {
-            height: 44px;
+        .quantity-dropdown {
+            min-width: 90px;
+            padding: 9px 14px;
+            border: 1px solid #dddddd;
+            border-radius: 10px;
+            background: #ffffff;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 600;
+            outline: none;
         }
 
-        .auto-style12 {
-            width: 394px;
-            height: 44px;
+        /* ================= BUTTONS ================= */
+
+        .product-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 18px;
         }
+
+        .cart-button {
+            background: #FFD21F !important;
+            border: none !important;
+            color: #222222 !important;
+            border-radius: 12px !important;
+            height: 48px !important;
+            width: 160px !important;
+            font-family: 'Nunito', sans-serif !important;
+            font-size: 15px !important;
+            font-weight: 800 !important;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .cart-button:hover {
+            background: #FFB800 !important;
+        }
+
+        .continue-button {
+            background: #222222 !important;
+            border: none !important;
+            color: #ffffff !important;
+            border-radius: 12px !important;
+            height: 48px !important;
+            width: 160px !important;
+            font-family: 'Nunito', sans-serif !important;
+            font-size: 15px !important;
+            font-weight: 800 !important;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .continue-button:hover {
+            background: #444444 !important;
+        }
+
+        .feedback-button {
+            background: #ffffff !important;
+            border: 2px solid #28a745 !important;
+            color: #28a745 !important;
+            border-radius: 12px !important;
+            height: 48px !important;
+            width: 190px !important;
+            font-family: 'Nunito', sans-serif !important;
+            font-size: 14px !important;
+            font-weight: 800 !important;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .feedback-button:hover {
+            background: #28a745 !important;
+            color: #ffffff !important;
+        }
+
+        .message-label {
+            display: block;
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: 700;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 991px) {
+
+            .product-card {
+                padding: 30px;
+            }
+
+            .product-details {
+                padding: 30px 5px 5px;
+            }
+
+            .product-image-section {
+                min-height: 350px;
+            }
+
+            .product-image {
+                height: 300px;
+            }
+
+            .product-name {
+                font-size: 29px;
+            }
+        }
+
+        @media (max-width: 576px) {
+
+            .product-page {
+                padding: 25px 12px 50px;
+            }
+
+            .product-card {
+                padding: 20px;
+                border-radius: 20px;
+            }
+
+            .product-image-section {
+                min-height: 280px;
+                padding: 20px;
+            }
+
+            .product-image {
+                height: 240px;
+            }
+
+            .product-name {
+                font-size: 25px;
+            }
+
+            .product-price {
+                font-size: 25px;
+            }
+
+            .product-buttons {
+                flex-direction: column;
+            }
+
+            .cart-button,
+            .continue-button,
+            .feedback-button {
+                width: 100% !important;
+            }
+
+            .quantity-area {
+                flex-wrap: wrap;
+            }
+        }
+
     </style>
-    <title>FoodMart - Free eCommerce Grocery Store HTML Website Template</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="author" content="">
-    <meta name="keywords" content="">
-    <meta name="description" content="">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="css/vendor.css">
-    <link rel="stylesheet" type="text/css" href="style.css">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 </head>
+
 <body>
-    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+
+    <!-- SVG ICONS -->
+
+    <svg xmlns="http://www.w3.org/2000/svg" style="display:none;">
+
         <defs>
-            <symbol xmlns="http://www.w3.org/2000/svg" id="link" viewBox="0 0 24 24">
-                <path fill="currentColor" d="M12 19a1 1 0 1 0-1-1a1 1 0 0 0 1 1Zm5 0a1 1 0 1 0-1-1a1 1 0 0 0 1 1Zm0-4a1 1 0 1 0-1-1a1 1 0 0 0 1 1Zm-5 0a1 1 0 1 0-1-1a1 1 0 0 0 1 1Zm7-12h-1V2a1 1 0 0 0-2 0v1H8V2a1 1 0 0 0-2 0v1H5a3 3 0 0 0-3 3v14a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3Zm1 17a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-9h16Zm0-11H4V6a1 1 0 0 1 1-1h1v1a1 1 0 0 0 2 0V5h8v1a1 1 0 0 0 2 0V5h1a1 1 0 0 1 1 1ZM7 15a1 1 0 1 0-1-1a1 1 0 0 0 1 1Zm0 4a1 1 0 1 0-1-1a1 1 0 0 0 1 1Z" />
+
+            <symbol id="heart" viewBox="0 0 24 24">
+                <path fill="currentColor"
+                    d="M20.16 4.61A6.27 6.27 0 0 0 12 4a6.27 6.27 0 0 0-8.16 9.48l7.45 7.45a1 1 0 0 0 1.42 0l7.45-7.45a6.27 6.27 0 0 0 0-8.87Zm-1.41 7.46L12 18.81l-6.75-6.74a4.28 4.28 0 0 1 3-7.3a4.25 4.25 0 0 1 3 1.25a1 1 0 0 0 1.42 0a4.27 4.27 0 0 1 6 6.05Z" />
             </symbol>
-            <symbol xmlns="http://www.w3.org/2000/svg" id="arrow-right" viewBox="0 0 24 24">
-                <path fill="currentColor" d="M17.92 11.62a1 1 0 0 0-.21-.33l-5-5a1 1 0 0 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1 1 0 0 0 0 1.42a1 1 0 0 0 1.42 0l5-5a1 1 0 0 0 .21-.33a1 1 0 0 0 0-.76Z" />
+
+            <symbol id="user" viewBox="0 0 24 24">
+                <path fill="currentColor"
+                    d="M15.71 12.71a6 6 0 1 0-7.42 0a10 10 0 0 0-6.22 8.18a1 1 0 0 0 2 .22a8 8 0 0 1 15.9 0a1 1 0 0 0 1 .89h.11a1 1 0 0 0 .88-1.1a10 10 0 0 0-6.25-8.19ZM12 12a4 4 0 1 1 4-4a4 4 0 0 1-4 4Z" />
             </symbol>
-            <symbol xmlns="http://www.w3.org/2000/svg" id="category" viewBox="0 0 24 24">
-                <path fill="currentColor" d="M19 5.5h-6.28l-.32-1a3 3 0 0 0-2.84-2H5a3 3 0 0 0-3 3v13a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-10a3 3 0 0 0-3-3Zm1 13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-13a1 1 0 0 1 1-1h4.56a1 1 0 0 1 .95.68l.54 1.64a1 1 0 0 0 .95.68h7a1 1 0 0 1 1 1Z" />
+
+            <symbol id="search" viewBox="0 0 24 24">
+                <path fill="currentColor"
+                    d="M21.71 20.29L18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a1 1 0 0 0 1.42 0a1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 7-7a7 7 0 0 1-7 7Z" />
             </symbol>
-            <symbol xmlns="http://www.w3.org/2000/svg" id="calendar" viewBox="0 0 24 24">
-                <path fill="currentColor" d="M19 4h-2V3a1 1 0 0 0-2 0v1H9V3a1 1 0 0 0-2 0v1H5a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3Zm1 15a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-7h16Zm0-9H4V7a1 1 0 0 1 1-1h2v1a1 1 0 0 0 2 0V6h6v1a1 1 0 0 0 2 0V6h2a1 1 0 0 1 1 1Z" />
+
+            <symbol id="cart" viewBox="0 0 24 24">
+                <path fill="currentColor"
+                    d="M8.5 19a1.5 1.5 0 1 0 1.5 1.5A1.5 1.5 0 0 0 8.5 19ZM19 16H7a1 1 0 0 1 0-2h8.491a3.013 3.013 0 0 0 2.885-2.176l1.585-5.55A1 1 0 0 0 19 5H6.74a3.007 3.007 0 0 0-2.82-2H3a1 1 0 0 0 0 2h.921a1.005 1.005 0 0 1 .962.725l.155.545v.005l1.641 5.742A3 3 0 0 0 7 18h12a1 1 0 0 0 0-2Zm-1.326-9l-1.22 4.274a1.005 1.005 0 0 1-.963.726H8.754l-.255-.892L7.326 7ZM16.5 19a1.5 1.5 0 1 0 1.5 1.5a1.5 1.5 0 0 0-1.5-1.5Z" />
             </symbol>
-            <symbol xmlns="http://www.w3.org/2000/svg" id="heart" viewBox="0 0 24 24">
-                <path fill="currentColor" d="M20.16 4.61A6.27 6.27 0 0 0 12 4a6.27 6.27 0 0 0-8.16 9.48l7.45 7.45a1 1 0 0 0 1.42 0l7.45-7.45a6.27 6.27 0 0 0 0-8.87Zm-1.41 7.46L12 18.81l-6.75-6.74a4.28 4.28 0 0 1 3-7.3a4.25 4.25 0 0 1 3 1.25a1 1 0 0 0 1.42 0a4.27 4.27 0 0 1 6 6.05Z" />
-            </symbol>
-            <symbol xmlns="http://www.w3.org/2000/svg" id="plus" viewBox="0 0 24 24">
-                <path fill="currentColor" d="M19 11h-6V5a1 1 0 0 0-2 0v6H5a1 1 0 0 0 0 2h6v6a1 1 0 0 0 2 0v-6h6a1 1 0 0 0 0-2Z" />
-            </symbol>
-            <symbol xmlns="http://www.w3.org/2000/svg" id="minus" viewBox="0 0 24 24">
-                <path fill="currentColor" d="M19 11H5a1 1 0 0 0 0 2h14a1 1 0 0 0 0-2Z" />
-            </symbol>
-            <symbol xmlns="http://www.w3.org/2000/svg" id="cart" viewBox="0 0 24 24">
-                <path fill="currentColor" d="M8.5 19a1.5 1.5 0 1 0 1.5 1.5A1.5 1.5 0 0 0 8.5 19ZM19 16H7a1 1 0 0 1 0-2h8.491a3.013 3.013 0 0 0 2.885-2.176l1.585-5.55A1 1 0 0 0 19 5H6.74a3.007 3.007 0 0 0-2.82-2H3a1 1 0 0 0 0 2h.921a1.005 1.005 0 0 1 .962.725l.155.545v.005l1.641 5.742A3 3 0 0 0 7 18h12a1 1 0 0 0 0-2Zm-1.326-9l-1.22 4.274a1.005 1.005 0 0 1-.963.726H8.754l-.255-.892L7.326 7ZM16.5 19a1.5 1.5 0 1 0 1.5 1.5a1.5 1.5 0 0 0-1.5-1.5Z" />
-            </symbol>
-            <symbol xmlns="http://www.w3.org/2000/svg" id="check" viewBox="0 0 24 24">
-                <path fill="currentColor" d="M18.71 7.21a1 1 0 0 0-1.42 0l-7.45 7.46l-3.13-3.14A1 1 0 1 0 5.29 13l3.84 3.84a1 1 0 0 0 1.42 0l8.16-8.16a1 1 0 0 0 0-1.47Z" />
-            </symbol>
-            <symbol xmlns="http://www.w3.org/2000/svg" id="trash" viewBox="0 0 24 24">
-                <path fill="currentColor" d="M10 18a1 1 0 0 0 1-1v-6a1 1 0 0 0-2 0v6a1 1 0 0 0 1 1ZM20 6h-4V5a3 3 0 0 0-3-3h-2a3 3 0 0 0-3 3v1H4a1 1 0 0 0 0 2h1v11a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V8h1a1 1 0 0 0 0-2ZM10 5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v1h-4Zm7 14a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V8h10Zm-3-1a1 1 0 0 0 1-1v-6a1 1 0 0 0-2 0v6a1 1 0 0 0 1 1Z" />
-            </symbol>
-            <symbol xmlns="http://www.w3.org/2000/svg" id="star-outline" viewBox="0 0 15 15">
-                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M7.5 9.804L5.337 11l.413-2.533L4 6.674l2.418-.37L7.5 4l1.082 2.304l2.418.37l-1.75 1.793L9.663 11L7.5 9.804Z" />
-            </symbol>
-            <symbol xmlns="http://www.w3.org/2000/svg" id="star-solid" viewBox="0 0 15 15">
-                <path fill="currentColor" d="M7.953 3.788a.5.5 0 0 0-.906 0L6.08 5.85l-2.154.33a.5.5 0 0 0-.283.843l1.574 1.613l-.373 2.284a.5.5 0 0 0 .736.518l1.92-1.063l1.921 1.063a.5.5 0 0 0 .736-.519l-.373-2.283l1.574-1.613a.5.5 0 0 0-.283-.844L8.921 5.85l-.968-2.062Z" />
-            </symbol>
-            <symbol xmlns="http://www.w3.org/2000/svg" id="search" viewBox="0 0 24 24">
-                <path fill="currentColor" d="M21.71 20.29L18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a1 1 0 0 0 1.42 0a1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 7-7a7 7 0 0 1-7 7Z" />
-            </symbol>
-            <symbol xmlns="http://www.w3.org/2000/svg" id="user" viewBox="0 0 24 24">
-                <path fill="currentColor" d="M15.71 12.71a6 6 0 1 0-7.42 0a10 10 0 0 0-6.22 8.18a1 1 0 0 0 2 .22a8 8 0 0 1 15.9 0a1 1 0 0 0 1 .89h.11a1 1 0 0 0 .88-1.1a10 10 0 0 0-6.25-8.19ZM12 12a4 4 0 1 1 4-4a4 4 0 0 1-4 4Z" />
-            </symbol>
-            <symbol xmlns="http://www.w3.org/2000/svg" id="close" viewBox="0 0 15 15">
-                <path fill="currentColor" d="M7.953 3.788a.5.5 0 0 0-.906 0L6.08 5.85l-2.154.33a.5.5 0 0 0-.283.843l1.574 1.613l-.373 2.284a.5.5 0 0 0 .736.518l1.92-1.063l1.921 1.063a.5.5 0 0 0 .736-.519l-.373-2.283l1.574-1.613a.5.5 0 0 0-.283-.844L8.921 5.85l-.968-2.062Z" />
-            </symbol>
+
         </defs>
+
     </svg>
 
-    <div class="auto-style3">
-        <div class="preloader">
-        </div>
-    </div>
 
-    <%--    <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasCart" aria-labelledby="My Cart">
-      <div class="offcanvas-header justify-content-center">
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div>
-      <div class="offcanvas-body">
-        <div class="order-md-last">
-          <h4 class="d-flex justify-content-between align-items-center mb-3">
-            <span class="text-primary">Your cart</span>
-            <span class="badge bg-primary rounded-pill">3</span>
-          </h4>
-          <ul class="list-group mb-3">
-            <li class="list-group-item d-flex justify-content-between lh-sm">
-              <div>
-                <h6 class="my-0">Growers cider</h6>
-                <small class="text-body-secondary">Brief description</small>
-              </div>
-              <span class="text-body-secondary">$12</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between lh-sm">
-              <div>
-                <h6 class="my-0">Fresh grapes</h6>
-                <small class="text-body-secondary">Brief description</small>
-              </div>
-              <span class="text-body-secondary">$8</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between lh-sm">
-              <div>
-                <h6 class="my-0">Heinz tomato ketchup</h6>
-                <small class="text-body-secondary">Brief description</small>
-              </div>
-              <span class="text-body-secondary">$5</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between">
-              <span>Total (USD)</span>
-              <strong>$20</strong>
-            </li>
-          </ul>
-  
-          <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
-        </div>
-      </div>
-    </div>--%>
+    <!-- SEARCH OFFCANVAS -->
 
-    <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasSearch" aria-labelledby="Search">
+    <div class="offcanvas offcanvas-end"
+        data-bs-scroll="true"
+        tabindex="-1"
+        id="offcanvasSearch"
+        aria-labelledby="Search">
+
         <div class="offcanvas-header justify-content-center">
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+
+            <button type="button"
+                class="btn-close"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close">
+            </button>
+
         </div>
+
         <div class="offcanvas-body">
+
             <div class="order-md-last">
+
                 <h4 class="d-flex justify-content-between align-items-center mb-3">
                     <span class="text-primary">Search</span>
                 </h4>
-                <form role="search" action="index.html" method="get" class="d-flex mt-3 gap-0">
-                    <input class="form-control rounded-start rounded-0 bg-light" type="email" placeholder="What are you looking for?" aria-label="What are you looking for?">
-                    <button class="btn btn-dark rounded-end rounded-0" type="submit">Search</button>
+
+                <form role="search"
+                    action="index.html"
+                    method="get"
+                    class="d-flex mt-3 gap-0">
+
+                    <input class="form-control rounded-start rounded-0 bg-light"
+                        type="text"
+                        placeholder="What are you looking for?"
+                        aria-label="What are you looking for?" />
+
+                    <button class="btn btn-dark rounded-end rounded-0"
+                        type="submit">
+                        Search
+                    </button>
+
                 </form>
+
             </div>
+
         </div>
+
     </div>
 
-    <header>
-        <div class="container-fluid">
-            <div class="row py-3 border-bottom">
 
-                <div class="col-sm-4 col-lg-3 text-center text-sm-start">
+    <!-- HEADER -->
+
+    <header class="foodmart-header">
+
+        <div class="container-fluid header-container">
+
+            <div class="row align-items-center">
+
+                <!-- LOGO -->
+
+                <div class="col-6 col-lg-3 text-center text-lg-start">
+
                     <div class="main-logo">
-                        <a href="index.html">
-                            <img src="images/logo.png" alt="logo" class="img-fluid">
+
+                        <a href="UserHome.aspx">
+
+                            <img src="images/logo.png"
+                                alt="FoodMart Logo"
+                                class="img-fluid" />
+
                         </a>
+
                     </div>
+
                 </div>
 
-                <div class="col-sm-6 offset-sm-2 offset-md-0 col-lg-5 d-none d-lg-block">
-                    <div class="search-bar row bg-light p-2 my-2 rounded-4">
-                        <div class="col-md-4 d-none d-md-block">
-                            <select class="form-select border-0 bg-transparent">
+
+                <!-- SEARCH -->
+
+                <div class="col-lg-5 d-none d-lg-block">
+
+                    <div class="search-bar row align-items-center">
+
+                        <div class="col-md-4">
+
+                            <select class="form-select">
+
                                 <option>All Categories</option>
                                 <option>Groceries</option>
                                 <option>Drinks</option>
                                 <option>Chocolates</option>
+
                             </select>
+
                         </div>
-                        <div class="col-11 col-md-7">
-                            <form id="search-form" class="text-center" action="index.html" method="post">
-                                <input type="text" class="form-control border-0 bg-transparent" placeholder="Search for more than 20,000 products" />
+
+                        <div class="col-md-7">
+
+                            <form id="search-form"
+                                class="text-center"
+                                action="index.html"
+                                method="post">
+
+                                <input type="text"
+                                    class="form-control"
+                                    placeholder="Search for more than 20,000 products" />
+
                             </form>
+
                         </div>
-                        <div class="col-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                <path fill="currentColor" d="M21.71 20.29L18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a1 1 0 0 0 1.42 0a1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 7-7a7 7 0 0 1-7 7Z" />
+
+                        <div class="col-md-1 text-center">
+
+                            <svg width="22"
+                                height="22"
+                                viewBox="0 0 24 24">
+
+                                <use xlink:href="#search"></use>
+
                             </svg>
+
                         </div>
+
                     </div>
+
                 </div>
 
-                <div class="col-sm-8 col-lg-4 d-flex justify-content-end gap-5 align-items-center mt-4 mt-sm-0 justify-content-center justify-content-sm-end">
-                    <div class="support-box text-end d-none d-xl-block">
-                        <span class="fs-6 text-muted">For Support?</span>
-                        <h5 class="mb-0">+980-34984089</h5>
+
+                <!-- RIGHT SIDE -->
+
+                <div class="col-6 col-lg-4">
+
+                    <div class="d-flex justify-content-end align-items-center gap-3">
+
+                        <div class="support-box text-end d-none d-xl-block">
+
+                            <span>For Support?</span>
+
+                            <h5 class="mb-0">
+                                +980-34984089
+                            </h5>
+
+                        </div>
+
+
+                        <ul class="d-flex list-unstyled m-0">
+
+                            <li>
+
+                                <a href="#"
+                                    class="header-icon mx-1">
+
+                                    <svg width="21"
+                                        height="21"
+                                        viewBox="0 0 24 24">
+
+                                        <use xlink:href="#user"></use>
+
+                                    </svg>
+
+                                </a>
+
+                            </li>
+
+
+                            <li>
+
+                                <a href="#"
+                                    class="header-icon mx-1">
+
+                                    <svg width="21"
+                                        height="21"
+                                        viewBox="0 0 24 24">
+
+                                        <use xlink:href="#heart"></use>
+
+                                    </svg>
+
+                                </a>
+
+                            </li>
+
+
+                            <li class="d-lg-none">
+
+                                <a href="#"
+                                    class="header-icon mx-1"
+                                    data-bs-toggle="offcanvas"
+                                    data-bs-target="#offcanvasSearch">
+
+                                    <svg width="21"
+                                        height="21"
+                                        viewBox="0 0 24 24">
+
+                                        <use xlink:href="#search"></use>
+
+                                    </svg>
+
+                                </a>
+
+                            </li>
+
+                        </ul>
+
+
+                        <div class="d-none d-lg-block">
+
+                            <a href="ViewCart1.aspx"
+                                class="cart-link">
+
+                                Your Cart
+
+                            </a>
+
+                        </div>
+
                     </div>
 
-                    <ul class="d-flex justify-content-end list-unstyled m-0">
-                        <li>
-                            <a href="#" class="rounded-circle bg-light p-2 mx-1">
-                                <svg width="24" height="24" viewBox="0 0 24 24">
-                                    <use xlink:href="#user"></use></svg>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="rounded-circle bg-light p-2 mx-1">
-                                <svg width="24" height="24" viewBox="0 0 24 24">
-                                    <use xlink:href="#heart"></use></svg>
-                            </a>
-                        </li>
-                        <li class="d-lg-none">
-                            <a href="#" class="rounded-circle bg-light p-2 mx-1" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
-                                <svg width="24" height="24" viewBox="0 0 24 24">
-                                    <use xlink:href="#cart"></use></svg>
-                            </a>
-                        </li>
-                        <li class="d-lg-none">
-                            <a href="#" class="rounded-circle bg-light p-2 mx-1" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSearch" aria-controls="offcanvasSearch">
-                                <svg width="24" height="24" viewBox="0 0 24 24">
-                                    <use xlink:href="#search"></use></svg>
-                            </a>
-                        </li>
-                    </ul>
-
-                    <div class="cart text-end d-none d-lg-block dropdown">
-                        <button class="border-0 bg-transparent d-flex flex-column gap-2 lh-1"
-                            type="button"
-                            onclick="window.location.href='ViewCart1.aspx';">
-                            <span class="fs-6 text-muted">Your Cart</span>
-                        </button>
-                    </div>
                 </div>
 
             </div>
-            <script src="js/jquery-1.11.0.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-            <script src="js/plugins.js"></script>
-            <script src="js/script.js"></script>
-            <form id="form1" runat="server">
-                <div>
-                    <table class="auto-style1">
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="auto-style4">&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="auto-style4">
-                                <asp:Image ID="Image1" runat="server" Height="197px" Width="205px" />
-                            </td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="auto-style4">
-                                <asp:Label ID="Label9" runat="server" Font-Bold="True" Font-Italic="True" Font-Names="Constantia" Text="Label"></asp:Label>
-                            </td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style8">
-                                <asp:Label ID="Label10" runat="server" Font-Bold="True" Font-Italic="True" Font-Names="Constantia" Text="Label"></asp:Label>
-                            </td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style7"></td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="auto-style4">
-                                <asp:Label ID="Label11" runat="server" Font-Bold="True" Font-Italic="True" Font-Names="Constantia" Text="Label"></asp:Label>
-                            </td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="auto-style4">&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td class="auto-style9"></td>
-                            <td class="auto-style9"></td>
-                            <td class="auto-style10">
-                                <asp:Label ID="Label12" runat="server" Font-Bold="True" Font-Italic="True" Font-Names="Constantia" Text="Quantity:"></asp:Label>
-                                &nbsp;<asp:Label ID="Label14" runat="server" Font-Bold="True" Font-Italic="True" Font-Names="Times New Roman" Text="1" ForeColor="Black"></asp:Label>
-                            </td>
-                            <td class="auto-style9">
-                                <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+
+        </div>
+
+    </header>
+
+
+    <!-- PRODUCT DETAILS -->
+
+    <form id="form1" runat="server">
+
+        <main class="product-page">
+
+            <div class="product-card">
+
+                <div class="row align-items-center g-4">
+
+
+                    <!-- PRODUCT IMAGE -->
+
+                    <div class="col-lg-5">
+
+                        <div class="product-image-section">
+
+                            <asp:Image ID="Image1"
+                                runat="server"
+                                CssClass="product-image"
+                                AlternateText="Product Image" />
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PRODUCT INFORMATION -->
+
+                    <div class="col-lg-7">
+
+                        <div class="product-details">
+
+
+                            <!-- PRODUCT NAME -->
+
+                            <div class="product-category">
+                                FoodMart Product
+                            </div>
+
+                            <h1 class="product-name">
+
+                                <asp:Label ID="Label9"
+                                    runat="server"
+                                    Text="Label">
+                                </asp:Label>
+
+                            </h1>
+
+
+                            <!-- PRICE -->
+
+                            <div class="product-price">
+
+                                <asp:Label ID="Label10"
+                                    runat="server"
+                                    Text="Label">
+                                </asp:Label>
+
+                            </div>
+
+
+                            <!-- DESCRIPTION -->
+
+                            <div class="product-description">
+
+                                <asp:Label ID="Label11"
+                                    runat="server"
+                                    Text="Label">
+                                </asp:Label>
+
+                            </div>
+
+
+                            <!-- QUANTITY -->
+
+                            <div class="quantity-area">
+
+                                <span class="quantity-label">
+                                    Quantity:
+                                </span>
+
+                                <asp:Label ID="Label14"
+                                    runat="server"
+                                    Text="1"
+                                    CssClass="quantity-number">
+                                </asp:Label>
+
+                                <asp:DropDownList ID="DropDownList1"
+                                    runat="server"
+                                    CssClass="quantity-dropdown"
+                                    AutoPostBack="True"
+                                    OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
                                 </asp:DropDownList>
-                                &nbsp;&nbsp;&nbsp;&nbsp; </td>
-                            <td class="auto-style9"></td>
-                            <td class="auto-style9"></td>
-                            <td class="auto-style9"></td>
-                            <td class="auto-style9"></td>
-                            <td class="auto-style9"></td>
-                            <td class="auto-style9"></td>
-                            <td class="auto-style9"></td>
-                            <td class="auto-style9"></td>
-                            <td class="auto-style9"></td>
-                            <td class="auto-style9"></td>
-                            <td class="auto-style9"></td>
-                            <td class="auto-style9"></td>
-                            <td class="auto-style9"></td>
-                            <td class="auto-style9"></td>
-                            <td class="auto-style9"></td>
-                            <td class="auto-style9"></td>
-                        </tr>
-                        <tr>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style8">
-                                <asp:Button ID="Button1" runat="server" Font-Bold="True" Font-Italic="True" Font-Names="Constantia" OnClick="Button1_Click" Text="ADD TO CART" BackColor="#FFCC00" Height="40px" Width="146px" />
-                            </td>
-                            <td class="auto-style7">
-                                <asp:Button ID="Button2" runat="server" Font-Bold="True" Font-Italic="True" Font-Names="Constantia" OnClick="Button1_Click" Text="CONTINUE" BackColor="#0099FF" Height="40px" Width="146px" ForeColor="White" PostBackUrl="~/UserHome.aspx" />
-                            </td>
-                            <td class="auto-style7">&nbsp;</td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style7"></td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="auto-style4">
-                    <asp:Button ID="btnFeedback0" runat="server"
-                        Text="GIVE FEEDBACK"
-                        BackColor="#28A745"
-                        ForeColor="White"
-                        Font-Bold="True"
-                        Font-Names="Constantia"
-                        Height="40px"
-                        Width="198px"
-                        PostBackUrl="~/FeedBackPage.aspx" Font-Italic="True" OnClick="btnFeedback_Click" />
-                            </td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td class="auto-style11"></td>
-                            <td class="auto-style11"></td>
-                            <td class="auto-style12">
-                                <asp:Label ID="Label13" runat="server" Font-Bold="True" Font-Italic="True" Font-Names="Constantia" Text="Label" Visible="False"></asp:Label>
-                            </td>
-                            <td class="auto-style11"></td>
-                            <td class="auto-style11"></td>
-                            <td class="auto-style11"></td>
-                            <td class="auto-style11"></td>
-                            <td class="auto-style11"></td>
-                            <td class="auto-style11"></td>
-                            <td class="auto-style11"></td>
-                            <td class="auto-style11"></td>
-                            <td class="auto-style11"></td>
-                            <td class="auto-style11"></td>
-                            <td class="auto-style11"></td>
-                            <td class="auto-style11"></td>
-                            <td class="auto-style11"></td>
-                            <td class="auto-style11"></td>
-                            <td class="auto-style11"></td>
-                            <td class="auto-style11"></td>
-                            <td class="auto-style11"></td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="auto-style4">&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td class="auto-style5"></td>
-                            <td class="auto-style5"></td>
-                            <td class="auto-style6"></td>
-                            <td class="auto-style5"></td>
-                            <td class="auto-style5"></td>
-                            <td class="auto-style5"></td>
-                            <td class="auto-style5"></td>
-                            <td class="auto-style5"></td>
-                            <td class="auto-style5"></td>
-                            <td class="auto-style5"></td>
-                            <td class="auto-style5"></td>
-                            <td class="auto-style5"></td>
-                            <td class="auto-style5"></td>
-                            <td class="auto-style5"></td>
-                            <td class="auto-style5"></td>
-                            <td class="auto-style5"></td>
-                            <td class="auto-style5"></td>
-                            <td class="auto-style5"></td>
-                            <td class="auto-style5"></td>
-                            <td class="auto-style5"></td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="auto-style4">&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="auto-style4">&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style8"></td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style7"></td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="auto-style4">&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="auto-style4">&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="auto-style4">&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="auto-style4">&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="auto-style4">&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="auto-style4">&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="auto-style4">&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="auto-style4">&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="auto-style4">&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="auto-style4">&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="auto-style4">&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="auto-style4">&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="auto-style4">&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="auto-style4">&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="auto-style4">&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                    </table>
+
+                            </div>
+
+
+                            <!-- BUTTONS -->
+
+                            <div class="product-buttons">
+
+                                <asp:Button ID="Button1"
+                                    runat="server"
+                                    Text="ADD TO CART"
+                                    CssClass="cart-button"
+                                    OnClick="Button1_Click" />
+
+
+                                <asp:Button ID="Button2"
+                                    runat="server"
+                                    Text="CONTINUE"
+                                    CssClass="continue-button"
+                                    OnClick="Button1_Click"
+                                    PostBackUrl="~/UserHome.aspx" />
+
+                            </div>
+
+
+                            <!-- FEEDBACK -->
+
+                            <asp:Button ID="btnFeedback0"
+                                runat="server"
+                                Text="GIVE FEEDBACK"
+                                CssClass="feedback-button"
+                                PostBackUrl="~/FeedBackPage.aspx"
+                                OnClick="btnFeedback_Click" />
+
+
+                            <!-- HIDDEN / STATUS LABEL -->
+
+                            <asp:Label ID="Label13"
+                                runat="server"
+                                Text="Label"
+                                Visible="False"
+                                CssClass="message-label">
+                            </asp:Label>
+
+                        </div>
+
+                    </div>
+
                 </div>
-            </form>
+
+            </div>
+
+        </main>
+
+    </form>
+
+
+    <!-- SCRIPTS -->
+
+    <script src="js/jquery-1.11.0.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous">
+    </script>
+
+    <script src="js/plugins.js"></script>
+
+    <script src="js/script.js"></script>
 </body>
 </html>
